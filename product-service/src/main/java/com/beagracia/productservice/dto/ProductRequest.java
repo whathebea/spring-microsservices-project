@@ -7,13 +7,19 @@ public class ProductRequest {
     private String name;
     private String description;
     private BigDecimal price;
+
     public ProductRequest(String name, String description, BigDecimal price) {
         this.name = name;
         this.description = description;
         this.price = price;
     }
+
     public ProductRequest() {
         super();
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getName() {
@@ -42,11 +48,7 @@ public class ProductRequest {
 
     @Override
     public String toString() {
-        return "ProductDto{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                '}';
+        return "ProductRequest{" + "name='" + name + '\'' + ", description='" + description + '\'' + ", price=" + price + '}';
     }
 
     @Override
@@ -59,11 +61,6 @@ public class ProductRequest {
     @Override
     public int hashCode() {
         return Objects.hash(getName(), getDescription(), getPrice());
-    }
-
-    // create builder
-    public static Builder builder() {
-        return new Builder();
     }
 
     public static class Builder {
