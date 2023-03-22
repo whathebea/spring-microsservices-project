@@ -1,6 +1,6 @@
 package com.beagracia.productservice.controller;
 
-import com.beagracia.productservice.dto.ProductDto;
+import com.beagracia.productservice.dto.ProductRequest;
 import com.beagracia.productservice.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ public class ProductController {
 
     @PostMapping("/addNewProduct/")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addNewProduct(@RequestBody ProductDto productDto) {
-        productService.addProduct(productDto);
+    public void addNewProduct(@RequestBody ProductRequest productRequest) {
+        productService.addProduct(productRequest);
     }
 }

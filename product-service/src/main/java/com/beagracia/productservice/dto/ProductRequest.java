@@ -3,16 +3,16 @@ package com.beagracia.productservice.dto;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class ProductDto {
+public class ProductRequest {
     private String name;
     private String description;
     private BigDecimal price;
-    public ProductDto(String name, String description, BigDecimal price) {
+    public ProductRequest(String name, String description, BigDecimal price) {
         this.name = name;
         this.description = description;
         this.price = price;
     }
-    public ProductDto() {
+    public ProductRequest() {
         super();
     }
 
@@ -52,7 +52,7 @@ public class ProductDto {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ProductDto that)) return false;
+        if (!(o instanceof ProductRequest that)) return false;
         return getName().equals(that.getName()) && getDescription().equals(that.getDescription()) && getPrice().equals(that.getPrice());
     }
 
@@ -86,8 +86,8 @@ public class ProductDto {
             return this;
         }
 
-        public ProductDto build() {
-            return new ProductDto(name, description, price);
+        public ProductRequest build() {
+            return new ProductRequest(name, description, price);
         }
     }
 }

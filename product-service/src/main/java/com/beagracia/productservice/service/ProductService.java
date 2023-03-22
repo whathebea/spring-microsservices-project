@@ -1,6 +1,6 @@
 package com.beagracia.productservice.service;
 
-import com.beagracia.productservice.dto.ProductDto;
+import com.beagracia.productservice.dto.ProductRequest;
 import com.beagracia.productservice.model.Product;
 import com.beagracia.productservice.repository.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -13,11 +13,11 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public void addProduct(ProductDto productDto) {
+    public void addProduct(ProductRequest productRequest) {
         Product product = Product.builder()
-                .withName(productDto.getName())
-                .withDescription(productDto.getDescription())
-                .withPrice(productDto.getPrice())
+                .withName(productRequest.getName())
+                .withDescription(productRequest.getDescription())
+                .withPrice(productRequest.getPrice())
                 .build();
         productRepository.save(product);
     }
