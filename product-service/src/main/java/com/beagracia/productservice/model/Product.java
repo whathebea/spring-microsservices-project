@@ -19,11 +19,6 @@ public class Product {
         this.description = description;
         this.price = price;
     }
-    public Product(String name, String description, BigDecimal price) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-    }
     public Product() {
         super();
     }
@@ -79,4 +74,42 @@ public class Product {
     public int hashCode() {
         return Objects.hash(getId(), getName(), getDescription(), getPrice());
     }
+
+    // create builder
+    public static ProductBuilder builder() {
+        return new ProductBuilder();
+    }
+
+    public static class ProductBuilder {
+        private final Product product;
+
+        public ProductBuilder() {
+            this.product = new Product();
+        }
+
+        public ProductBuilder withId(int id) {
+            this.product.id = id;
+            return this;
+        }
+
+        public ProductBuilder withName(String name) {
+            this.product.name = name;
+            return this;
+        }
+
+        public ProductBuilder withDescription(String description) {
+            this.product.description = description;
+            return this;
+        }
+
+        public ProductBuilder withPrice(BigDecimal price) {
+            this.product.price = price;
+            return this;
+        }
+
+        public Product build() {
+            return this.product;
+        }
+    }
+
 }
