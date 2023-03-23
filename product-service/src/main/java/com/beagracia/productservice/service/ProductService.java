@@ -1,9 +1,12 @@
 package com.beagracia.productservice.service;
 
 import com.beagracia.productservice.dto.ProductRequest;
+import com.beagracia.productservice.dto.ProductResponse;
 import com.beagracia.productservice.model.Product;
 import com.beagracia.productservice.repository.ProductRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProductService {
@@ -20,5 +23,19 @@ public class ProductService {
                 .withPrice(productRequest.getPrice())
                 .build();
         productRepository.save(product);
+    }
+
+    public List<ProductResponse> getAllProducts() {
+        List<Product> products = productRepository.findAll();
+        return products.stream().map(this::productResponseMap).toList();
+    }
+
+    private ProductResponse productResponseMap(Product product) {
+        return ProductResponse.builder()
+                .withId(product.getId())
+                .withName(product.getName())
+                .withDescription(product.getDescription())
+                .withPrice(product.getPrice())
+                .build();
     }
 }
