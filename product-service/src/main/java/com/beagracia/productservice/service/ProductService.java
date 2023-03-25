@@ -30,7 +30,7 @@ public class ProductService {
         return products.stream().map(this::productResponseMap).toList();
     }
 
-    private ProductResponse productResponseMap(Product product) {
+    ProductResponse productResponseMap(Product product) {
         return ProductResponse.builder()
                 .withId(product.getId())
                 .withName(product.getName())
